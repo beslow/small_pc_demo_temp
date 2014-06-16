@@ -1,0 +1,39 @@
+<table id="table_users" class="table table-hover table-bordered" >
+  <thead>
+  <td>コレクション属性</td>
+  <td>識別番号</td>
+  <td>種類</td>
+  <td>バーツ名</td>
+  <td>類型</td>
+  <td>登録日/削除日</td>
+  <td>更新回数</td>
+  <td>最終更新日</td>
+  <td>最終参照日</td>
+  <td>参照回数</td>
+  <td>パーツ説明</td>
+  <td colspan="4">操作</td>
+  </thead>
+  <tbody>
+  <% unless @parts.blank? %>
+      <% @parts.each do |part| %>
+          <tr>
+            <td><%= part.property.name unless part.property.blank? %></td>
+            <td><%= part.classify_id %></td>
+            <td><%= part.partclass.name unless part.partclass.blank? %></td>
+            <td><%= link_to part.name, part_path(part.id) %></td>
+            <td><%= part.type.name unless part.type.blank?  %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><%= part.description %></td>
+            <td><%= link_to "編集", "#" %></td>
+            <td><%= link_to "削除", "#" %></td>
+            <td><%= link_to "複写", "#" %></td>
+            <td><%= link_to "移動", "#" %></td>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>

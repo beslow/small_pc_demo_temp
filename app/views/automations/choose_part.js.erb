@@ -1,0 +1,14 @@
+$("#part_name").val("<%= @part_name %>")                                                   //填充【パーツ名】
+$("#automation_part_id").val("<%= @automation_part_id %>")                                 //填充隐藏的パーツID
+$("#property").val("<%= @part_property %>")                                                //填充【コレクション属性】
+$("#part_tree").html("<%= @tree_html.html_safe %>")                                        //替换パラメータ設置左边树形结构的html
+$("#part_content").html("<%= escape_javascript(render('ep_content')) %>")                 //替换パラメータ設置右边的内容
+$('#myModal').modal('hide');                                                                //隐藏模式框
+$('#part_tree').addClass("have_x_scroll")                                                   //给パラメータ設置左边树形结构所在的div添加水平滚动条
+$('#part_tree').find("a").first().addClass("tree_button_back")                              //给パラメータ設置左边树形结构第一个链接添加tree_button_back样式
+tree_height = $('#part_tree').height();
+content_height = $('#part_content').height()
+//last_height= tree_height >= content_height ?  tree_height : content_height
+//alert(last_height)
+//$('#part_tree').css("height", last_height+"px")
+//$('#part_content').css("height", last_height+"px")

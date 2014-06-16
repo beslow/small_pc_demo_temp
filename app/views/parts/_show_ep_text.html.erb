@@ -1,0 +1,16 @@
+<% @parameters.each do |parameter| %>
+    <br/>
+    <div class="row">
+      <div class="col-md-2 text-left"><label>パラメータ名：</label></div>
+      <div class="col-md-1"><%= parameter.name %></div>
+      <div class="col-md-1 text-right"><label>説明：</label></div>
+      <div class="col-md-5 text-left"><%= parameter.description %></div>
+    </div>
+<% end %>
+<br/>
+<div class="row">
+  <div class="col-md-2 text-left"><label>構造文：</label></div>
+  <div class="col-md-10">
+    <%= text_area_tag :content ,@part.content, disabled: true,size: "142x20", wrap: "hard" %>
+  </div>
+</div>

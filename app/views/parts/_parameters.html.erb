@@ -1,0 +1,17 @@
+<% @num_params.to_i.times do |i| %>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="col-md-4">パラメータ名*</div>
+        <div class="col-md-8">
+          <%= text_field_tag "params[name][#{i}]" %>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="col-md-1">説明</div>
+        <div class="col-md-11">
+          <%= text_field_tag "params[description][#{i}]", '', size: 87 %>
+        </div>
+      </div>
+    </div>
+    <br/>
+<% end %>

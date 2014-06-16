@@ -1,0 +1,29 @@
+<table id="table_automations" class="table table-hover table-bordered" >
+  <thead>
+  <td>ID</td>
+  <td>パーツ名</td>
+  <td> コレクション属性</td>
+  <td>自動化名</td>
+  <td>自動化説明</td>
+  <td colspan="3">操作</td>
+  </thead>
+  <tbody>
+  <% unless @automations.blank? %>
+    <% @automations.each do |automation| %>
+      <tr>
+        <td><%= automation.id %></td>
+        <td><%= automation.part.name unless automation.part.blank? %></td>
+        <td><%= automation.part.property.name unless automation.part.blank?||automation.part.property.blank?%></td>
+        <td><%= automation.name %></td>
+        <td><%= automation.description %></td>
+        <td><%= link_to "実行", execute_automation_path(automation.id), format: 'xls' %></td>
+        <td>
+          <%= link_to "編集", "#" %>
+        </td>
+        <td><%= link_to "削除", "#" %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+

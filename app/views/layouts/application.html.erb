@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SmallPcDemo</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
+</head>
+<body>
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="row">
+    <div class="col-md-11">
+      <ul class="nav navbar-nav marginleft100">
+        <li class="active"><%= link_to "パーツ管理", root_path %></li>
+        <li><%= link_to "自動化管理", automations_path %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container margintop70 container-xs-height">
+    <%= yield %>
+</div>
+<br/><br/>
+<footer class="modal-footer">
+</footer>
+</body>
+</html>

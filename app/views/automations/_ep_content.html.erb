@@ -1,0 +1,31 @@
+<% unless @eps.blank? %>
+    <% @eps.each_with_index do |ep,index| %>
+        <% if index == 0 %>
+            <div class="tab-pane active" id=<%= ep.second %>>
+              <% ep.first.parameters.each_with_index do |p,index| %>
+                  <div class="row">
+                    <div class="col-md-2 text-right"><%= p.name %></div>
+                    <div class="col-md-5">
+                      <%= text_field_tag "automation_parameters[#{ep.first.name+','+ep.second},#{p.id}]", '', size: 58 %>
+                    </div>
+                    <div class="col-md-5 text-left"><%= p.description %></div>
+                  </div>
+                  <br/>
+              <% end %>
+            </div>
+        <% else %>
+            <div class="tab-pane" id=<%= ep.second %>>
+              <% ep.first.parameters.each_with_index do |p,index| %>
+                  <div class="row">
+                    <div class="col-md-2 text-right"><%= p.name %></div>
+                    <div class="col-md-5">
+                      <%= text_field_tag "automation_parameters[#{ep.first.name+','+ep.second},#{p.id}]", '', size: 58 %>
+                    </div>
+                    <div class="col-md-5 text-left"><%= p.description %></div>
+                  </div>
+                  <br/>
+              <% end %>
+            </div>
+        <% end %>
+    <% end %>
+<% end %>

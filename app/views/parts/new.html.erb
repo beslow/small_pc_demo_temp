@@ -1,0 +1,106 @@
+<div class="prompt_message_box">
+  <%= render "shared/flash_prompt_message" %>
+</div>
+
+<%= form_tag parts_path do %>
+<div class="row">
+  <div class="col-md-2 text-left">コレクション属性</div>
+  <div class="col-md-3">
+    <%= select_tag :property, options_from_collection_for_select(@properties, :id, :name, @property_default_id ) %>
+  </div>
+</div>
+<br/>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#text" data-toggle="tab" class="btn btn-primary">文字列型EP</a></li>
+  <li><a href="#table" data-toggle="tab" class="btn btn-primary" disabled="true">テーブル型EP</a></li>
+  <li><a href="#source" data-toggle="tab" class="btn btn-primary"  disabled="true">プログラム型EP</a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="text">
+    <br/>
+
+        <div class="row">
+          <div class="col-md-8">
+              <div class="col-md-2">パーツ名*</div>
+              <div class="col-md-10">
+                <%= text_field_tag :name, params[:name], size: 90%>
+              </div>
+          </div>
+          <div class="col-md-4">
+
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-md-8">
+              <div class="col-md-2">パーツ説明</div>
+              <div class="col-md-10">
+                <%= text_field_tag :description, params[:description], size: 142 %>
+              </div>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="col-md-2">EPファイル</div>
+            <div class="col-md-10">
+              <%= text_field_tag :file_path, params[:file_path], size: 90 %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="col-md-2">
+              <%= link_to "選択","#", class: "btn btn-primary btn-sm", role: "button" %>
+            </div>
+            <div class="col-md-2">
+              <%= link_to "アップロード","#", class: "btn btn-primary btn-sm", role: "button" %>
+            </div>
+          </div>
+        </div>
+        <br/>
+
+        <div id="paramater">
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="col-md-2">文字列構造</div>
+            <div class="col-md-10">
+              <%= text_area_tag :content, params[:content], size: "142x20", wrap: "hard" %>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-md-1 text-right">
+            <%= submit_tag "保存", data: { disable_with: '保存中...' }, class:"btn btn-primary btn-sm" %>
+          </div>
+          <div class="col-md-1">
+            <%= submit_tag "連続作成",data:{ continue: true }, class:"btn btn-primary btn-sm" %>
+          </div>
+          <div class="col-md-1">
+            <%= link_to "戻る",parts_path, class: "btn btn-primary btn-sm", role: "button" %>
+          </div>
+        </div>
+
+
+  </div>
+  <div class="tab-pane" id="table"><h1>This will be completed in the future！</h1></div>
+  <div class="tab-pane" id="source"><h1>This will be completed in the future！</h1></div>
+</div>
+
+<% end %>
+
+<div class="row">
+  <div id="add_params" class="col-md-4">
+    <%= form_tag insert_parts_path, remote: true do %>
+        <div class="col-md-4 text-right">パラメータ数</div>
+        <div class="col-md-2">
+          <%= text_field_tag :num_params,params[:num_params], size: 2 %>
+        </div>
+        <div class="col-md-1">
+          <%= submit_tag "確定", class: "btn btn-primary btn-sm" %>
+        </div>
+    <% end %>
+  </div>
+</div>

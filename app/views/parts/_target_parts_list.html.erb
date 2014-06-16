@@ -1,0 +1,4 @@
+<div id="target_parts_list">
+  <%= select_tag :target_parts, options_from_collection_for_select(@target_parts.collect!.with_index {|p,index| p.no = "[#{p.id},#{index}]";p}, :no, :name, @selected), multiple: false, size: 15, class: "width200" %>
+      <%= text_field_tag "target_parts_id", @target_parts_ids, class: "hiden" %>
+</div>

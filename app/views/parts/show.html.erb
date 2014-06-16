@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-2 text-left"><label>コレクション属性：</label></div>
+  <div class="col-md-10 text-left"><%= @part.property.name unless @part.property.blank? %></div>
+</div>
+<br/>
+<% unless @part.partclass.name.eql? "CP" %>
+    <div class="row">
+      <div class="col-md-2 text-left"><label>類型：</label></div>
+      <div class="col-md-10 text-left"><%= @part.type.name unless @part.type.blank? %></div>
+    </div>
+    <br/>
+<% end %>
+<div class="row">
+  <div class="col-md-2 text-left"><label>パーツ名：</label></div>
+  <div class="col-md-10 text-left"><%= @part.name %></div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-md-2 text-left"><label>パーツ説明：</label></div>
+  <div class="col-md-10 text-left"><%= @part.description %></div>
+</div>
+<% if @part.partclass.name.eql? "CP" %>
+    <%= render "show_cp" %>
+<% elsif @part.type.name.eql? "テーブル" %>
+
+<% else %>
+  <%= render "show_ep_text" %>
+<% end %>
+<div class="row">
+  <div class="col-md-1">
+    <%= link_to "戻る", parts_path, class: "btn btn-primary" %>
+  </div>
+</div>

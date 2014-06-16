@@ -1,0 +1,123 @@
+<%= render "shared/flash_prompt_message" %>
+<%= form_tag automations_path do %>
+    <div class="row">
+      <%= hidden_field_tag :automation_part_id,@automation_part_id %>
+      <div class="col-md-2 text-left">パーツ名</div>
+      <div class="col-md-3">
+        <%= text_field_tag :part_name, @part_name, disabled: true, size: 30 %>
+      </div>
+      <div class="col-md-2">
+        <%= link_to "選択", "#", class: "btn btn-sm btn-primary","data-toggle" => "modal", "data-target" => "#myModal" %>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-md-2 text-left">コレクション属性</div>
+      <div class="col-md-3">
+        <%= text_field_tag :property, @part_property, disabled: true, size: 30 %>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-md-2 text-left">自動化名</div>
+      <div class="col-md-3">
+        <%= text_field_tag :automation_name, params[:automation_name], size: 30 %>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-md-2 text-left">自動化説明</div>
+      <div class="col-md-3">
+        <%= text_field_tag :description, params[:description], size: 150 %>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-md-2 text-left">出力タイプ</div>
+      <div class="col-md-3 export_type_radio">
+        <%= collection_radio_buttons :export, :export_type_id, @export_types, :id, :name, checked: @checked  %>
+      </div>
+    </div>
+    <br/>
+    <fieldset>
+      <legend>パラメータ設置</legend>
+      <div class="row padding0 row-xs-height">
+        <div id="part_tree" class="col-md-2 tree right_border well col-xs-height">
+            <%= @tree_html.html_safe unless @tree_html.blank? %>
+        </div>
+        <div id="part_content" class="col-md-10 tab-content well col-xs-height">
+            <%= render "ep_content" unless @eps.blank? %>
+        </div>
+      </div>
+    </fieldset>
+    <br/>
+    <div class="row">
+      <div class="col-md-1">
+        <%= submit_tag "保存", class: "btn btn-primary btn-sm" %>
+      </div>
+      <div class="col-md-1">
+        <%= link_to "戻る", automations_path, class: "btn btn-sm btn-primary", role: "button" %>
+      </div>
+    </div>
+<% end %>
+<div id="modal_box">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">パーツコレクションシステム-パーツ選択画面</h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-3 text-left">コレクション属性</div>
+          <div class="col-md-6">
+            <%= select_tag :part_property, options_from_collection_for_select(@properties, :id, :name, @property_default_id ) %>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-md-3 text-left">パーツ名</div>
+          <div class="col-md-6">
+            <%= text_field_tag :part_name, params[:part_name], size: 40 %>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-bordered">
+              <thead>
+                <th>コレクション属性</th>
+                <th>パーツ名</th>
+                <th>種類</th>
+                <th>パーツ説明</th>
+              </thead>
+              <tbody>
+                <% unless @parts.blank? %>
+                <% @parts.all.each do |part| %>
+                  <tr class="select" data-part_id="<%= part.id %>" >
+                    <td><%= part.property.name unless part.property.blank? %></td>
+                    <td><%= part.name %></td>
+                    <td><%= part.partclass.name unless part.partclass.blank? %></td>
+                    <td><%= part.description %></td>
+                  </tr>
+                <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <%= form_tag choose_part_automations_path, remote: true do %>
+      <%= hidden_field_tag :part_id,params[:part_id] %>
+      <div class="modal-footer">
+        <button id="close_modal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= submit_tag "choose",  class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
