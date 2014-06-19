@@ -2,7 +2,7 @@ class Part < ActiveRecord::Base
   belongs_to :partclass
   belongs_to :type
   belongs_to :property
-  has_many :parameters
+  has_many :parameters, dependent: :destroy
   has_many :combos
   has_many :automations
   validates :property_id, presence: true

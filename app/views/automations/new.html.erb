@@ -2,39 +2,39 @@
 <%= form_tag automations_path do %>
     <div class="row">
       <%= hidden_field_tag :automation_part_id,@automation_part_id %>
-      <div class="col-md-2 text-left">パーツ名</div>
-      <div class="col-md-3">
+      <div class="col-xs-2 text-left">パーツ名</div>
+      <div class="col-xs-3">
         <%= text_field_tag :part_name, @part_name, disabled: true, size: 30 %>
       </div>
-      <div class="col-md-2">
+      <div class="col-xs-2">
         <%= link_to "選択", "#", class: "btn btn-sm btn-primary","data-toggle" => "modal", "data-target" => "#myModal" %>
       </div>
     </div>
     <br/>
     <div class="row">
-      <div class="col-md-2 text-left">コレクション属性</div>
-      <div class="col-md-3">
+      <div class="col-xs-2 text-left">コレクション属性</div>
+      <div class="col-xs-3">
         <%= text_field_tag :property, @part_property, disabled: true, size: 30 %>
       </div>
     </div>
     <br/>
     <div class="row">
-      <div class="col-md-2 text-left">自動化名</div>
-      <div class="col-md-3">
+      <div class="col-xs-2 text-left">自動化名</div>
+      <div class="col-xs-3">
         <%= text_field_tag :automation_name, params[:automation_name], size: 30 %>
       </div>
     </div>
     <br/>
     <div class="row">
-      <div class="col-md-2 text-left">自動化説明</div>
-      <div class="col-md-3">
+      <div class="col-xs-2 text-left">自動化説明</div>
+      <div class="col-xs-3">
         <%= text_field_tag :description, params[:description], size: 150 %>
       </div>
     </div>
     <br/>
     <div class="row">
-      <div class="col-md-2 text-left">出力タイプ</div>
-      <div class="col-md-3 export_type_radio">
+      <div class="col-xs-2 text-left">出力タイプ</div>
+      <div class="col-xs-3 export_type_radio">
         <%= collection_radio_buttons :export, :export_type_id, @export_types, :id, :name, checked: @checked  %>
       </div>
     </div>
@@ -42,20 +42,20 @@
     <fieldset>
       <legend>パラメータ設置</legend>
       <div class="row padding0 row-xs-height">
-        <div id="part_tree" class="col-md-2 tree right_border well col-xs-height">
+        <div id="part_tree" class="col-xs-2 tree right_border well col-xs-height">
             <%= @tree_html.html_safe unless @tree_html.blank? %>
         </div>
-        <div id="part_content" class="col-md-10 tab-content well col-xs-height">
+        <div id="part_content" class="col-xs-10 tab-content well col-xs-height">
             <%= render "ep_content" unless @eps.blank? %>
         </div>
       </div>
     </fieldset>
     <br/>
     <div class="row">
-      <div class="col-md-1">
+      <div class="col-xs-1">
         <%= submit_tag "保存", class: "btn btn-primary btn-sm" %>
       </div>
-      <div class="col-md-1">
+      <div class="col-xs-1">
         <%= link_to "戻る", automations_path, class: "btn btn-sm btn-primary", role: "button" %>
       </div>
     </div>
@@ -71,21 +71,21 @@
 
       <div class="modal-body">
         <div class="row">
-          <div class="col-md-3 text-left">コレクション属性</div>
-          <div class="col-md-6">
+          <div class="col-xs-3 text-left">コレクション属性</div>
+          <div class="col-xs-6">
             <%= select_tag :part_property, options_from_collection_for_select(@properties, :id, :name, @property_default_id ) %>
           </div>
         </div>
         <br/>
         <div class="row">
-          <div class="col-md-3 text-left">パーツ名</div>
-          <div class="col-md-6">
+          <div class="col-xs-3 text-left">パーツ名</div>
+          <div class="col-xs-6">
             <%= text_field_tag :part_name, params[:part_name], size: 40 %>
           </div>
         </div>
         <br/>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-xs-12">
             <table class="table table-bordered">
               <thead>
                 <th>コレクション属性</th>

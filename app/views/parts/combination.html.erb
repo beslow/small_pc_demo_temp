@@ -2,45 +2,45 @@
 <%= form_tag "#" do %>
     <div class="row">
 
-      <div class="col-md-1 text-right">パーツ名</div>
-      <div class="col-md-2">
+      <div class="col-xs-1 text-right">パーツ名</div>
+      <div class="col-xs-2">
         <%= text_field_tag :part_name, params[:part_name] %>
       </div>
 
-      <div class="col-md-2 text-right">コレクション属性</div>
-      <div class="col-md-2">
+      <div class="col-xs-2 text-right">コレクション属性</div>
+      <div class="col-xs-2">
         <%= select_tag :property, options_from_collection_for_select(@properties, :id, :name, @condition_default_property_id) %>
       </div>
-      <div class="col-md-1 col-md-offset-1">
+      <div class="col-xs-1 col-xs-offset-1">
           <%= link_to "検索","#", class: "btn btn-sm btn-primary", role: "button" %>
       </div>
     </div>
 <% end %>
 <br/>
 <div class="row">
-    <div class="col-md-2 marginleft10">パーツ一覧（EP/CP）</div>
+    <div class="col-xs-2 marginleft10">パーツ一覧（EP/CP）</div>
 </div>
 <%= form_tag change_listbox_parts_path , remote: true do %>
     <div class="row">
-      <div class="col-md-3 marginleft10">
+      <div class="col-xs-3 marginleft10">
         <div id="source_parts_list">
           <%= select_tag :source_parts, options_from_collection_for_select(@source_parts, :id, :name), multiple: true, size: 15, class: "width200" %>
         </div>
       </div>
-      <div class="col-md-1">
+      <div class="col-xs-1">
         <br/><br/><br/><br/>
         <%= submit_tag "→", class: "btn btn-sm btn-primary" %>
         <br/><br/><br/>
         <%= submit_tag "←", class: "btn btn-sm btn-primary" %>
       </div>
-      <div class="col-md-3">
+      <div class="col-xs-3">
         <div id="target_parts_list">
           <%= select_tag :target_parts, options_from_collection_for_select(@target_parts.collect!.with_index {|p,index| p.no = "[#{p.id},#{index}]";p}, :no, :name, @selected), multiple: false, size: 15, class: "width200" %>
           <%= text_field_tag "target_parts_id", @target_parts_ids, class: "hiden" %>
         </div>
 
       </div>
-      <div class="col-md-1">
+      <div class="col-xs-1">
         <br/><br/><br/><br/>
         <%= submit_tag "↑", class: "btn btn-sm btn-primary" %>
         <br/><br/><br/>
@@ -52,13 +52,13 @@
 <%= form_tag create_cp_parts_path do %>
     <div class="row">
 
-      <div class="col-md-1 text-right">新CP名</div>
-      <div class="col-md-2">
+      <div class="col-xs-1 text-right">新CP名</div>
+      <div class="col-xs-2">
         <%= text_field_tag :cp_name, params[:cp_name] %>
       </div>
 
-      <div class="col-md-2 text-right">コレクション属性</div>
-      <div class="col-md-2">
+      <div class="col-xs-2 text-right">コレクション属性</div>
+      <div class="col-xs-2">
         <%= select_tag :property, options_from_collection_for_select(@properties, :id, :name, @default_property_id) %>
       </div>
 
@@ -74,11 +74,11 @@
 
 
 
-        <div class="col-md-1 text-right">
+        <div class="col-xs-1 text-right">
         <%= submit_tag "結合", class:"btn btn-primary btn-sm" %>
         </div>
 
-        <div class="col-md-1">
+        <div class="col-xs-1">
         <%= link_to "戻る",parts_path, class: "btn btn-primary btn-sm", role: "button" %>
         </div>
 

@@ -17,7 +17,7 @@ class CreateParts < ActiveRecord::Migration
       t.integer :table_line_color
       t.datetime :delete_at
       t.integer :deleter_id
-      t.boolean :delete_flag
+      t.boolean :delete_flag, :default => false
       t.integer :author_id
       t.integer :regenerator_id
 

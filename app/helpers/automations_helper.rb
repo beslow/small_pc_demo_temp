@@ -15,7 +15,7 @@ module AutomationsHelper
     path = "" if path.blank?
     parent_path = "" if parent_path.blank?
     begin
-      root_part = Part.find(root_id)
+      root_part = Part.includes(:combos).find(root_id)
     rescue
       return string_html
     end
@@ -43,7 +43,7 @@ module AutomationsHelper
 
   def generate_array root_id, array_ep, parent_path, path
     begin
-      root_part = Part.find(root_id)
+      root_part = Part.includes(:combos).find(root_id)
     rescue
       return array_ep
     end
@@ -84,7 +84,7 @@ module AutomationsHelper
 
   def all_sources root_id
     begin
-      root_part = Part.find(root_id)
+      root_part = Part.includes(:combos).find(root_id)
     rescue
       return @sources
     end

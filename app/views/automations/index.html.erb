@@ -1,30 +1,30 @@
 <%= render "shared/flash_prompt_message" %>
 <div class="row">
-  <div class="col-md-1 text-right">パーツ名</div>
-  <div class="col-md-2">
+  <div class="col-xs-1 text-right">パーツ名</div>
+  <div class="col-xs-2">
     <%= text_field_tag :part_name, params[:part_name] %>
   </div>
-  <div class="col-md-2 text-right"> コレクション属性</div>
-  <div class="col-md-2">
+  <div class="col-xs-2 text-right"> コレクション属性</div>
+  <div class="col-xs-2">
     <%= select_tag :property, "<option></option>".html_safe, class: "select_box" %>
   </div>
-  <div class="col-md-1 text-right">自動化名</div>
-  <div class="col-md-2">
+  <div class="col-xs-1 text-right">自動化名</div>
+  <div class="col-xs-2">
     <%= text_field_tag :automation_name, params[:automation_name] %>
   </div>
-  <div class="col-md-2">
+  <div class="col-xs-2">
     <%= link_to "検索", "#", class: "btn btn-primary btn-sm", role: "button" %>
   </div>
 </div>
 <br/>
 <div class="row">
-  <div class="col-md-2 col-md-offset-10">
+  <div class="col-xs-2 col-xs-offset-10">
     <%= button_to "新規", new_automation_path,method: :get, class: "btn btn-sm btn-primary" %>
   </div>
 </div>
 <br/>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-xs-12">
     <%= render "table_automations" %>
   </div>
 </div>

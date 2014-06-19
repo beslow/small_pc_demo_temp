@@ -29,7 +29,7 @@
             <td></td>
             <td><%= part.description %></td>
             <td><%= link_to "編集", "#" %></td>
-            <td><%= link_to "削除", "#" %></td>
+            <td><%= link_to "削除", part_path(part.id), method: :delete, data: { confirm: "are you sure?" } %></td>
             <td><%= link_to "複写", "#" %></td>
             <td><%= link_to "移動", "#" %></td>
           </tr>

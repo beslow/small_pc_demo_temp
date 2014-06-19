@@ -2,7 +2,7 @@ class PartsController < ApplicationController
   include PartsHelper
   include AutomationsHelper
   def index
-    @parts = Part.all
+    @parts = Part.where(delete_flag: false)
   end
 
   def new
@@ -173,5 +173,16 @@ class PartsController < ApplicationController
       @cp_tree_html = generate_tree_html @part.id
     end
   end
-
+  
+  def destroy
+    begin
+      Part.find(params[:id]).update_attribute(:delete_flag, true)
+    rescue
+      flash[:danger] = "发生错误！"
+      redirect_to parts_path
+      return
+    end
+    flash[:success] = "成功删除！"
+    redirect_to parts_path
+  end
 end

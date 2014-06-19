@@ -8,17 +8,17 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
-<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-  <div class="row">
-    <div class="col-md-11">
-      <ul class="nav navbar-nav marginleft100">
+<div class="navbar navbar-fixed-top navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
         <li class="active"><%= link_to "パーツ管理", root_path %></li>
         <li><%= link_to "自動化管理", automations_path %></li>
       </ul>
     </div>
   </div>
-</nav>
-<div class="container margintop70 container-xs-height">
+</div>
+<div class="container margintop70 container-xs-height minwidth">
     <%= yield %>
 </div>
 <br/><br/>

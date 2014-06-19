@@ -2,24 +2,24 @@
 <%= form_tag parts_search_path do %>
     <div class="row">
     
-      <div class="col-md-2 text-right">
+      <div class="col-xs-2 text-right">
         キーワード
       </div>
-      <div class="col-md-2">
+      <div class="col-xs-2">
         <%= text_field_tag :key_word, @key_word %>
       </div>
 
-      <div class="col-md-1 text-right">
+      <div class="col-xs-1 text-right">
         EP名
       </div>
-      <div class="col-md-2">
+      <div class="col-xs-2">
         <%= text_field_tag :ep_name, @ep_name %>
       </div>
 
-      <div class="col-md-1 text-right">
+      <div class="col-xs-1 text-right">
         EP属性名
       </div>
-      <div class="col-md-2">
+      <div class="col-xs-2">
         <%= select_tag :ep_property, "<option>            </option>".html_safe, class: "select_box" %>
       </div>
 
@@ -27,7 +27,7 @@
     
     <div class="row">
 
-      <div class="col-md-offset-10 col-md-2">
+      <div class="col-xs-offset-10 col-xs-2">
         <%= submit_tag "検索", class: "btn btn-sm btn-primary" %>
       </div>
 
@@ -35,24 +35,24 @@
 
     <div class="row">
 
-      <div class="col-md-2 text-right">
+      <div class="col-xs-2 text-right">
         識別番号
       </div>
-      <div class="col-md-2">
+      <div class="col-xs-2">
         <%= text_field_tag :classify_id, @classify_id %>
       </div>
 
-      <div class="col-md-1 text-right">
+      <div class="col-xs-1 text-right">
         CP名
       </div>
-      <div class="col-md-2">
+      <div class="col-xs-2">
         <%= text_field_tag :cp_name, @cp_name %>
       </div>
 
-      <div class="col-md-1 text-right">
+      <div class="col-xs-1 text-right">
         CP属性名
       </div>
-      <div class="col-md-2">
+      <div class="col-xs-2">
         <%= select_tag :cp_property, "<option>                    </option>".html_safe, class: "select_box"  %>
       </div>
 
@@ -61,20 +61,20 @@
 <br/><br/>
 <div class="row">
 
-  <div class="col-md-offset-7 col-md-1">
+  <div class="col-xs-offset-7 col-xs-1">
     <%= button_to "EP新規", new_part_path, method: :get, class: "btn btn-primary btn-sm" %>
   </div>
 
-  <div class="col-md-2">
+  <div class="col-xs-2">
     <%= button_to "EP/CP結合", combination_parts_path, method: :get, class: "btn btn-sm btn-primary" %>
   </div>
 
-  <div class="col-md-2">
+  <div class="col-xs-2">
     <%= button_to "クリーニング","#", method: :get, class: "btn btn-sm btn-primary" %>
   </div>
 
 </div>
 <br/>
-<div class="col-md-12">
+<div class="col-xs-12">
   <%= render "table_parts" %>
 </div>
