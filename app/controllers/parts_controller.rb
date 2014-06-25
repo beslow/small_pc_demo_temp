@@ -2,7 +2,7 @@ class PartsController < ApplicationController
   include PartsHelper
   include AutomationsHelper
   def index
-    @parts = Part.where(delete_flag: false)
+    @parts = Part.all                               #where(delete_flag: false)
   end
 
   def new
@@ -56,7 +56,7 @@ class PartsController < ApplicationController
     end
 
     if params[:target_parts_id].blank?
-      flash.now[:danger] = "CP的子part不能为空！"
+      flash.now[:danger] = "サブパーツを選択してください。"
 
       render combination_parts_path
       return
@@ -176,13 +176,15 @@ class PartsController < ApplicationController
   
   def destroy
     begin
-      Part.find(params[:id]).update_attribute(:delete_flag, true)
+      Part.find(params[:id]).update_attributes(delete_flag: true, 
+                                                delete_at: Time.new
+                                               )
     rescue
-      flash[:danger] = "发生错误！"
+      flash[:danger] = "削除失敗！"
       redirect_to parts_path
       return
     end
-    flash[:success] = "成功删除！"
+    flash[:success] = "削除しました。"
     redirect_to parts_path
   end
 end

@@ -22,7 +22,12 @@
             <td><%= part.partclass.name unless part.partclass.blank? %></td>
             <td><%= link_to part.name, part_path(part.id) %></td>
             <td><%= part.type.name unless part.type.blank?  %></td>
-            <td></td>
+            <td>
+              <% if  part.delete_flag == true %>
+                <%= part.delete_at.strftime "%Y-%m-%d" unless part.delete_at.blank? %>
+                <span class="required">*</span>
+              <% end %>
+            </td>
             <td></td>
             <td></td>
             <td></td>

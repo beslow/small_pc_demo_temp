@@ -19,7 +19,7 @@
     </div>
     <br/>
     <div class="row">
-      <div class="col-xs-2 text-left">自動化名</div>
+      <div class="col-xs-2 text-left">自動化名<span class="required">*</span></div>
       <div class="col-xs-3">
         <%= text_field_tag :automation_name, params[:automation_name], size: 30 %>
       </div>
@@ -112,8 +112,8 @@
       <%= form_tag choose_part_automations_path, remote: true do %>
       <%= hidden_field_tag :part_id,params[:part_id] %>
       <div class="modal-footer">
-        <button id="close_modal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= submit_tag "choose",  class: "btn btn-primary" %>
+        <button id="close_modal" type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+        <%= submit_tag "選択",  class: "btn btn-primary" %>
       </div>
       <% end %>
     </div>

@@ -15,7 +15,7 @@ class AutomationsController < ApplicationController
     @checked = ExportType.find_by_name("EXCEL").id
     @properties = Property.all
     @property_default_id = 18
-    @parts = Part.all
+    @parts = Part.where(delete_flag: false)
   end
 
   # 若パラメータ設置 下的参数值如下表示
@@ -63,12 +63,12 @@ class AutomationsController < ApplicationController
           a.save
         end
       end
-      flash[:success] = "#{automation.name}创建完成！"
+      flash[:success] = "#{automation.name}は作成完了！"
       redirect_to automations_path
       return
     else
       init_and_memory_automation_new                                          # automation保存失败时返回new页面，同时要记忆已输入值并对某些实例变量初始化
-      flash.now[:danger] = "操作冲突！"
+      flash.now[:danger] = "操作失敗！"
       render new_automation_path
       return
     end

@@ -7,7 +7,7 @@ class CreateAutomations < ActiveRecord::Migration
       t.integer :export_type_id
       t.integer :deleter_id
       t.datetime :delete_at
-      t.boolean :delete_flag
+      t.boolean :delete_flag, :default => false
       t.integer :author_id
       t.integer :regenerator_id
 

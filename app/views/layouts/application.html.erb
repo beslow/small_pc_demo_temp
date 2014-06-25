@@ -8,16 +8,25 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
-<div class="navbar navbar-fixed-top navbar-default" role="navigation">
+<nav class="navbar navbar-fixed-top navbar-default" role="navigation">
   <div class="container">
-    <div class="navbar-collapse collapse">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar_menu">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar_menu">
       <ul class="nav navbar-nav">
         <li class="active"><%= link_to "パーツ管理", root_path %></li>
         <li><%= link_to "自動化管理", automations_path %></li>
       </ul>
     </div>
   </div>
-</div>
+</nav>
 <div class="container margintop70 container-xs-height minwidth">
     <%= yield %>
 </div>

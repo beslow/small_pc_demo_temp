@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140607094604) do
     t.integer  "export_type_id"
     t.integer  "deleter_id"
     t.datetime "delete_at"
-    t.boolean  "delete_flag"
+    t.boolean  "delete_flag",    default: false
     t.integer  "author_id"
     t.integer  "regenerator_id"
     t.datetime "created_at"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20140607094604) do
     t.integer  "sort"
     t.integer  "part_id"
     t.integer  "sub_part_id"
-    t.boolean  "delete_flag"
+    t.boolean  "delete_flag",    default: false
     t.integer  "author_id"
     t.integer  "regenerator_id"
     t.datetime "created_at"
